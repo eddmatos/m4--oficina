@@ -2,11 +2,11 @@
   "name": "Gerenciador de Oficina",
   "version": "0.0.1",
   "description": "Sistema para gerenciamento de oficina mecânica. Estudando POO na EP Guiomar em 2026.",
-  "main": "src/server.ts",
+  "main": "backend/src/server.ts",
   "scripts": {
     "start": "node dist/index.js",
     "build": "tsc",
-    "dev": "nodemon --watch src --ext ts --exec ts-node src/server.ts"
+    "dev": "tsx watch backend/src/server.ts"
   },
   "repository": {
     "type": "git",
@@ -20,7 +20,14 @@
     "url": "https://github.com/davimagals/m4-oficina/issues"
   },
   "homepage": "https://github.com/davimagals/m4-oficina#readme",
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.4.1",
+    "tsx": "^4.23.13",
+    "typescript": "^6.0.3"
+  },
   "dependencies": {
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "mysql2": "^3.24.3"
   }
 }
