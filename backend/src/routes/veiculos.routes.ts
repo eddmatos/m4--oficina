@@ -11,9 +11,9 @@ router.get('/', veiculosController.listarTodos)
 router.post('/criar', veiculosController.criar)
 
 // Editar veículo
-router.patch('/editar/:id', veiculosController.editar)
+router.patch('/editar/:placa', veiculosController.editar)
 
 // Apagar veículo
-router.delete('/apagar/:id', veiculosController.apagar)
+router.delete('/apagar/:placa', veiculosController.apagar)
 
 export default router

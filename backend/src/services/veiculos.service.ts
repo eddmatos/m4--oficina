@@ -38,7 +38,7 @@ export default class VeiculosService {
     }
 
     // Editar veículo
-    async editar(veiculo: Veiculo, id: number): Promise<Veiculo|null> {
+    async editar(veiculo: Veiculo, placa: any): Promise<Veiculo|null> {
         const [resultado] = await pool.execute(
             `
             UPDATE veiculo
@@ -47,14 +47,14 @@ export default class VeiculosService {
                 marca = ?,
                 modelo = ?,
                 ano = ?
-            WHERE id = ?
+            WHERE placa = ?
             `,
             [
                 veiculo.placa,
                 veiculo.marca,
                 veiculo.modelo,
                 veiculo.ano,
-                id
+                placa
             ]
         );
 
@@ -68,15 +68,15 @@ export default class VeiculosService {
 
         return {
             ...veiculo,
-            id
+            placa
         };
     }
 
     // Apagar veículo
-    async apagar(id: number): Promise<boolean> {
+    async apagar(placa: any): Promise<boolean> {
         const [resultado] = await pool.execute(
-            'DELETE FROM veiculo WHERE id = ?',
-            [id]
+            'DELETE FROM veiculo WHERE placa = ?',
+            [placa]
         );
 
         const affectedRows = (resultado as {

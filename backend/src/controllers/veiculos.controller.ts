@@ -36,16 +36,16 @@ export default class VeiculosController {
         res: Response
     ): Promise<void> => {
         const veiculo = req.body;
-        const id = Number(req.params.id);
+        const placa = req.params.placa;
 
-        if (!Number.isInteger(id) || id <= 0) {
+        if (placa === "") {
             res.status(400).json({
                 erro: 'ID inválido'
             });
             return;
         }
 
-        const resultado = await this.service.editar(veiculo, id);
+        const resultado = await this.service.editar(veiculo, placa);
 
         if (!resultado) {
             res.status(404).json({
@@ -63,16 +63,16 @@ export default class VeiculosController {
         res: Response
     ): Promise<void> => {
 
-        const id = Number(req.params.id);
+        const placa = req.params.placa;
 
-        if (!Number.isInteger(id) || id <= 0) {
+        if (placa === "") {
             res.status(400).json({
                 erro: 'ID inválido'
             });
             return;
         }
 
-        const resultado = await this.service.apagar(id);
+        const resultado = await this.service.apagar(placa);
 
         if (!resultado) {
             res.status(404).json({
